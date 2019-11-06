@@ -11,12 +11,18 @@
 #endif
 
 // This class is exported from the dll
-class LAB9HEAPANDPRIORITYQUEUEDLL_API CLab9HeapAndPriorityQueueDll {
+class LAB9HEAPANDPRIORITYQUEUEDLL_API PriorityQueueWQueue {
 public:
-	CLab9HeapAndPriorityQueueDll(void);
+	bool insert(int num);
+	bool remove(int loc);
+	bool printQueue();
 	// TODO: add your methods here.
 };
 
-extern LAB9HEAPANDPRIORITYQUEUEDLL_API int nLab9HeapAndPriorityQueueDll;
+class LAB9HEAPANDPRIORITYQUEUEDLL_API PriorityQueueWHeap {
+public:
+	bool insert(int num);
+	bool remove(int loc);
+	bool printQueue();
 
-LAB9HEAPANDPRIORITYQUEUEDLL_API int fnLab9HeapAndPriorityQueueDll(void);
+};

@@ -10,6 +10,10 @@
 #define LAB9HEAPANDPRIORITYQUEUEDLL_API __declspec(dllimport)
 #endif
 
+#include <Queue>
+#include <vector>
+#include <algorithm>
+
 // This class is exported from the dll
 class LAB9HEAPANDPRIORITYQUEUEDLL_API PriorityQueueWQueue {
 public:
@@ -17,6 +21,8 @@ public:
 	bool remove(int loc);
 	bool printQueue();
 	// TODO: add your methods here.
+private:
+	std::queue<int> priorityQueue;
 };
 
 class LAB9HEAPANDPRIORITYQUEUEDLL_API PriorityQueueWHeap {
@@ -24,5 +30,8 @@ public:
 	bool insert(int num);
 	bool remove(int loc);
 	bool printQueue();
+
+private:
+	std::vector<int> Heap; //I think we just do heap stuffs with this
 
 };

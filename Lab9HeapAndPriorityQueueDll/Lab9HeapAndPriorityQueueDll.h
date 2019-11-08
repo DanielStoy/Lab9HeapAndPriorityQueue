@@ -22,7 +22,7 @@ public:
 	bool printQueue();
 	// TODO: add your methods here.
 private:
-	std::queue<int> priorityQueue;
+	std::vector<int> queue; // i dunno what the hell is going on
 };
 
 class LAB9HEAPANDPRIORITYQUEUEDLL_API PriorityQueueWHeap {

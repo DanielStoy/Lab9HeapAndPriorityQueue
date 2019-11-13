@@ -11,35 +11,48 @@ typedef std::chrono::high_resolution_clock Clock;
 
 int main()
 {
-	int sortMethod = 0;
+	vector<int> nums;
+	PriorityQueueWQueue myQueue;
+	PriorityQueueWHeap myHeap;
 	int amount = 0;
-	cout << "enter queue method, 0 for queue, 1 for heap" << endl;
-	cin >> sortMethod;
-	cout << endl;
+	int remove = 0;
 	cout << "enter amount" << endl;
 	cin >> amount;
-	cout << endl;
-	Clock::time_point t1;
-	Clock::time_point t2;
-
-	if (sortMethod == 0) {
-		PriorityQueueWQueue myQueue;
-		t1 = Clock::now();
-		for (int i = 0; i < amount; i++) {
-			myQueue.insert(rand() % 10000);
-		}
-		cout << myQueue.printQueue();
-		t2 = Clock::now();
+	for (int i = 0; i < amount; i++) {
+		nums.push_back(rand() % 10000);
 	}
-	else {
-		PriorityQueueWHeap myHeap;
-		t1 = Clock::now();
-		for (int i = 0; i < amount; i++) {
-			myHeap.insert(rand() % 10000);
-		}
-		cout << myHeap.printQueue();
-		t2 = Clock::now();
-	}
+	Clock::time_point in1;
+	Clock::time_point in2;
 
-	cout << "That took " << chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count() << " nanoseconds";
+	cout << "insert and sort Queue" << endl;
+	in1 = Clock::now();
+	for (int i = 0; i < amount; i++) {
+		myQueue.insert(nums[i]);
+	}
+	cout<< myQueue.printQueue() <<endl;
+	in2 = Clock::now();
+	cout << "queue insert took " << chrono::duration_cast<chrono::nanoseconds>(in2 - in1).count() << " nanoseconds" <<endl;
+	cout << "remove all queue" << endl;
+	in1 = Clock::now();
+	for (int i = 0; i < amount; i++) {
+		myQueue.remove(0);
+	}
+	in2 = Clock::now();
+	cout << "queue remove took " << chrono::duration_cast<chrono::nanoseconds>(in2 - in1).count() << " nanoseconds" <<endl << endl <<endl;
+
+	cout << "insert and sort heap" << endl;
+	in1 = Clock::now();
+	for (int i = 0; i < amount; i++) {
+		myHeap.insert(nums[i]);
+	}
+	cout << myHeap.printQueue() << endl;
+	in2 = Clock::now();
+	cout << "heap insert took " << chrono::duration_cast<chrono::nanoseconds>(in2 - in1).count() << " nanoseconds" << endl;
+	cout << "remove all Heap" << endl;
+	in1 = Clock::now();
+	for (int i = 0; i < amount; i++) {
+		myHeap.remove(0);
+	}
+	in2 = Clock::now();
+	cout << "Heap remove took " << chrono::duration_cast<chrono::nanoseconds>(in2 - in1).count() << " nanoseconds" << endl;
 }

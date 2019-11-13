@@ -19,6 +19,11 @@ int main()
 	myQueue.insert(10);
 	myQueue.insert(100);
 	myQueue.insert(1000000);
+	
+	cout << myQueue.printQueue();
+
+	myQueue.remove(3);
+
 	cout << myQueue.printQueue();
 	////A simple main function to make it easier to test
 	//int elems = 0;

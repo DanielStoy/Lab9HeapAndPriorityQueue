@@ -67,6 +67,8 @@ bool PriorityQueueWHeap::insert(int num) {
 	
 	return true;
 }
+
+//Takes in a child and engueues upwards towards root
 bool PriorityQueueWHeap::engueue(int Loc)
 {
 	//Explain the math behind parentLoc
@@ -77,49 +79,50 @@ bool PriorityQueueWHeap::engueue(int Loc)
 		return true;
 	}
 
+	//Preforms a swap
 	if (Heap[parentLoc] < Heap[Loc]){
 		int holder = Heap[parentLoc];
 		Heap[parentLoc] = Heap[Loc];
 		Heap[Loc] = holder;
 	}
 
+	//Continues on with parent
 	return engueue(parentLoc);
 }
 
 //Not needed but will be left since it shows how to find children
+//Goes from the top and works it's way down
 bool PriorityQueueWHeap::IsValidHeap(int loc) {
 	return true;
-
+	//
 	bool holder;
 	int left = 2 * loc + 1;
 	int right = 2 * (loc + 1);
-	if (left >= Heap.size())
+	if (left >= Heap.size() || right >= Heap.size())
 	{
-		//Do something
+		return true;
 	}
-	else if (Heap[loc] >= Heap[left]) {
-		holder = IsValidHeap(left);
-	}
-
-	if (right >= Heap.size())
-	{
-		//Do something
-	}
-	else if (Heap[loc] >= Heap[right])
-	{
-		holder = IsValidHeap(right);
-	}
-	//Incorrect
-	//This implementation may cause out of bounds errors
-	//Get around this by checking against size
-	//An out of bounds should return true
-	//A failure of left or right should return false
 	
-	//Still is failing since a false does not end the string
-	if (Heap[loc] < Heap[right] || Heap[loc] < Heap[left])
-	{
-		
-	}
+
+	//if (right >= Heap.size())
+	//{
+	//	//Do something
+	//}
+	//else if (Heap[loc] >= Heap[right])
+	//{
+	//	holder = IsValidHeap(right);
+	//}
+	////Incorrect
+	////This implementation may cause out of bounds errors
+	////Get around this by checking against size
+	////An out of bounds should return true
+	////A failure of left or right should return false
+	//
+	////Still is failing since a false does not end the string
+	//if (Heap[loc] < Heap[right] || Heap[loc] < Heap[left])
+	//{
+	//	
+	//}
 }
 
 bool PriorityQueueWHeap::remove(int loc) {

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <chrono>
+#include <cstdlib>
 #include "..//Lab9HeapAndPriorityQueueDll/Lab9HeapAndPriorityQueueDll.h"
 
 using namespace std;
@@ -10,16 +11,25 @@ typedef std::chrono::high_resolution_clock Clock;
 
 int main()
 {
-	PriorityQueueWQueue myQueue;
-	myQueue.insert(1);
-	myQueue.insert(0);
-	myQueue.insert(5);
-	myQueue.insert(2);
-	myQueue.insert(4);
-	myQueue.insert(10);
-	myQueue.insert(100);
-	myQueue.insert(1000000);
-	cout << myQueue.printQueue();
+	int sortMethod = 0;
+	int amount = 0;
+	cout << "enter queue method, 0 for queue, 1 for heap" << endl;
+	cin >> sortMethod;
+	cout << endl;
+	cout << "enter amount" << endl;
+	cin >> amount;
+	cout << endl;
+
+	if (sortMethod == 0) {
+		PriorityQueueWQueue myQueue;
+		for (int i = 0; i < amount; i++) {
+			myQueue.insert(rand() % 10000);
+		}
+		cout << myQueue.printQueue();
+	}
+	else {
+		PriorityQueueWHeap myHeap;
+	}
 	////A simple main function to make it easier to test
 	//int elems = 0;
 	//int sort = 0;

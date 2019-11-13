@@ -9,8 +9,20 @@ namespace Lab9UnitTest
 	{
 	public:
 		
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(QueueRemoveTest)
 		{
+		}
+
+		TEST_METHOD(QueueRemoveNone) {
+
+		}
+
+		TEST_METHOD(InsertPrint) {
+
+		}
+
+		TEST_METHOD(InsertPrint2) {
+
 		}
 	};
 }

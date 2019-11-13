@@ -35,3 +35,14 @@ private:
 	std::vector<int> Heap; //I think we just do heap stuffs with this
 
 };
+
+class LAB9HEAPANDPRIORITYQUEUEDLL_API Node {
+public:
+	int val;
+	Node* left;
+	Node* right;
+
+	Node(Node* Left, Node* Right, int Val);
+	Node(int Val);
+	Node();
+};

@@ -71,7 +71,7 @@ bool PriorityQueueWHeap::insert(int num) {
 	Heap.push_back(num);
 
 	//Enqueue from new location
-	engueue(holder);
+	enqueue(holder);
 
 	//Old code that used a while instead of recursize
 	//Kept for prosterity
@@ -109,7 +109,7 @@ bool PriorityQueueWHeap::insert(int num) {
 }
 
 //Takes in a child and engueues upwards towards root
-bool PriorityQueueWHeap::engueue(int Loc)
+bool PriorityQueueWHeap::enqueue(int Loc)
 {
 	//Explain the math behind parentLoc
 	int parentLoc = (Loc - 1) / 2;
@@ -127,7 +127,7 @@ bool PriorityQueueWHeap::engueue(int Loc)
 	}
 
 	//Continues on with parent
-	return engueue(parentLoc);
+	return enqueue(parentLoc);
 }
 
 //Not needed but will be left since it shows how to find children
@@ -154,6 +154,15 @@ bool PriorityQueueWHeap::IsValidHeap(int loc) {
 }
 
 bool PriorityQueueWHeap::remove(int loc) {
+	//Swap with last element
+	int temp = Heap[loc];
+	Heap[loc] = Heap.back();
+	Heap.back() = temp;
+
+	//Delete the last element
+	Heap.pop_back();
+
+
 	return false;
 }
 

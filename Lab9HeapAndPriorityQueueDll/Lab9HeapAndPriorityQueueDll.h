@@ -12,22 +12,22 @@
 
 #include <Queue>
 #include <vector>
-#include <algorithm>
+#include <string>
 
 class LAB9HEAPANDPRIORITYQUEUEDLL_API PriorityNode {
 public:
 	int priority;
 	int value;
-	PriorityNode(int val);
+	PriorityNode(int val, int Priority);
 };
 
 // This class is exported from the dll
 class LAB9HEAPANDPRIORITYQUEUEDLL_API PriorityQueueWQueue {
 public:
 	PriorityQueueWQueue();
-	bool insert(int num);
+	bool insert(int num, int count = 0);
 	bool remove(int loc);
-	bool printQueue();
+	std::string printQueue();
 	// TODO: add your methods here.
 private:
 	std::vector<PriorityNode> queue;

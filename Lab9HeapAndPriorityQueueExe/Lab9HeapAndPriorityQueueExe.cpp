@@ -19,33 +19,27 @@ int main()
 	cout << "enter amount" << endl;
 	cin >> amount;
 	cout << endl;
+	Clock::time_point t1;
+	Clock::time_point t2;
 
 	if (sortMethod == 0) {
 		PriorityQueueWQueue myQueue;
+		t1 = Clock::now();
 		for (int i = 0; i < amount; i++) {
 			myQueue.insert(rand() % 10000);
 		}
 		cout << myQueue.printQueue();
+		t2 = Clock::now();
 	}
 	else {
 		PriorityQueueWHeap myHeap;
+		t1 = Clock::now();
+		for (int i = 0; i < amount; i++) {
+			myHeap.insert(rand() % 10000);
+		}
+		cout << myHeap.printQueue();
+		t2 = Clock::now();
 	}
-	////A simple main function to make it easier to test
-	//int elems = 0;
-	//int sort = 0;
-	//cout << "How many elements would you like?" << endl;
-	//cin >> elems;
-	//cout << "which sort, 0: bubble, 1:insertion, 2: Merge, 3:Quick, 4:Radix" << endl;
-	//cin >> sort;
-	//Clock::time_point t1;
-	//Clock::time_point t2;
-	//if (sort == 0) {
-	//	t1 = Clock::now();
-	//	t2 = Clock::now();
-	//}
-	//else if (sort == 1) {
-	//	t1 = Clock::now();
-	//	t2 = Clock::now();
-	//}
-	//cout << chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count() << " nanoseconds" << endl;
+
+	cout << "That took " << chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count() << " nanoseconds";
 }

@@ -38,15 +38,15 @@ public:
 	//PriorityQueueWHeap();
 	bool insert(int num);
 	bool remove(int loc);
-	bool printQueue();
+	std::string printQueue();
 	bool IsValidHeap(int loc);
 
 private:
 	std::vector<int> Heap; //I think we just do heap stuffs with this
 	//Node* top;
 
-	bool engueue(int loc);
-
+	bool enqueue(int loc);
+	bool enqueueToLeaf(int loc);
 };
 
 class LAB9HEAPANDPRIORITYQUEUEDLL_API Node {

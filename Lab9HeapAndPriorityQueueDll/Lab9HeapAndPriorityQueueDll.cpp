@@ -71,7 +71,7 @@ bool PriorityQueueWHeap::insert(int num) {
 	Heap.push_back(num);
 
 	//Enqueue from new location
-	engueue(holder);
+	enqueue(holder);
 
 	//Old code that used a while instead of recursize
 	//Kept for prosterity
@@ -109,25 +109,27 @@ bool PriorityQueueWHeap::insert(int num) {
 }
 
 //Takes in a child and engueues upwards towards root
-bool PriorityQueueWHeap::engueue(int Loc)
+bool PriorityQueueWHeap::enqueue(int Loc)
 {
-	//Explain the math behind parentLoc
-	int parentLoc = (Loc - 1) / 2;
-	//Has hit the end of the array
-	if (parentLoc < 0)
+	if (Loc == 0)
 	{
 		return true;
 	}
-
+	int parentLoc = (Loc - 1) / 2;
+	//Has hit the end of the array
+	
 	//Preforms a swap
 	if (Heap[parentLoc] < Heap[Loc]){
 		int holder = Heap[parentLoc];
 		Heap[parentLoc] = Heap[Loc];
 		Heap[Loc] = holder;
 	}
+	else {
+		return true;
+	}
 
 	//Continues on with parent
-	return engueue(parentLoc);
+	return enqueue(parentLoc);
 }
 
 //Not needed but will be left since it shows how to find children
@@ -154,11 +156,62 @@ bool PriorityQueueWHeap::IsValidHeap(int loc) {
 }
 
 bool PriorityQueueWHeap::remove(int loc) {
+	if (loc >= Heap.size())
+	{
+		return false;
+	}
+	//Swap with last element
+	int temp = Heap[loc];
+	Heap[loc] = Heap.back();
+	Heap.back() = temp;
+
+	//Delete the last element
+	Heap.pop_back();
+
+	enqueueToLeaf(loc);
+
 	return false;
 }
 
-bool PriorityQueueWHeap::printQueue() {
-	return false;
+bool PriorityQueueWHeap::enqueueToLeaf(int loc) {
+	int tempLoc;
+	int tempVal;
+	int left = 2 * loc + 1;
+	int right = 2 * (loc + 1);
+
+	if (left >= Heap.size() || right >= Heap.size())
+	{
+		return true;
+	}
+
+	//Find the greater of the two children
+	if (Heap[right] > Heap[left])
+	{
+		tempVal = Heap[right];
+		tempLoc = right;
+	}
+	else {
+		tempVal = Heap[left];
+		tempLoc = left;
+	}
+
+	if (tempVal > Heap[loc])
+	{
+		Heap[tempLoc] = Heap[loc];
+		Heap[loc] = tempVal;
+		enqueueToLeaf(tempLoc);
+	}
+
+	return true;
+}
+
+std::string PriorityQueueWHeap::printQueue() {
+	std::vector<int> temp = Heap;
+	std::string returnString;
+	for (int i = 0; i < Heap.size(); i++) {
+		returnString += std::to_string(Heap[i]) + " ";
+	}
+	return returnString;
 }
 
 Node::Node() 

@@ -16,8 +16,105 @@ bool PriorityQueueWQueue::printQueue() {
 }
 //Heap stuffs
 
+//PriorityQueueWHeap::PriorityQueueWHeap() {
+//	top = nullptr;
+//	size = 0;
+//}
+
 bool PriorityQueueWHeap::insert(int num) {
-	return false;
+	int holder = Heap.size();
+	Heap.push_back(num);
+
+	//Enqueue from new location
+	engueue(holder);
+
+	//Old code that used a while instead of recursize
+	//Kept for prosterity
+
+	//int currentLoc = holder;
+	//if (holder % 2 == 1)
+	//{
+	//	holder++;
+	//}
+	//int parentLoc = (holder / 2) - 1;
+	////int holder = 0;
+	//while (parentLoc >= 0)
+	//{
+	//	//If the Heap is now ordered end this while loop
+	//	if (Heap[parentLoc] > Heap[currentLoc])
+	//	{
+	//		break;
+	//	}
+	//	//Swap values so the child is in the spot of the parent
+	//	holder = Heap[parentLoc];
+	//	Heap[parentLoc] = Heap[currentLoc];
+	//	Heap[currentLoc] = holder;
+
+	//	//Find the proper parent to this location
+	//	currentLoc = parentLoc;
+	//	holder = currentLoc;
+	//	if (holder % 2 == 1)
+	//	{
+	//		holder++;
+	//	}
+	//	parentLoc = holder / 2 - 1;
+	//}
+	
+	return true;
+}
+bool PriorityQueueWHeap::engueue(int Loc)
+{
+	//Explain the math behind parentLoc
+	int parentLoc = (Loc - 1) / 2;
+	//Has hit the end of the array
+	if (parentLoc < 0)
+	{
+		return true;
+	}
+
+	if (Heap[parentLoc] < Heap[Loc]){
+		int holder = Heap[parentLoc];
+		Heap[parentLoc] = Heap[Loc];
+		Heap[Loc] = holder;
+	}
+
+	return engueue(parentLoc);
+}
+
+//Not needed but will be left since it shows how to find children
+bool PriorityQueueWHeap::IsValidHeap(int loc) {
+	return true;
+
+	bool holder;
+	int left = 2 * loc + 1;
+	int right = 2 * (loc + 1);
+	if (left >= Heap.size())
+	{
+		//Do something
+	}
+	else if (Heap[loc] >= Heap[left]) {
+		holder = IsValidHeap(left);
+	}
+
+	if (right >= Heap.size())
+	{
+		//Do something
+	}
+	else if (Heap[loc] >= Heap[right])
+	{
+		holder = IsValidHeap(right);
+	}
+	//Incorrect
+	//This implementation may cause out of bounds errors
+	//Get around this by checking against size
+	//An out of bounds should return true
+	//A failure of left or right should return false
+	
+	//Still is failing since a false does not end the string
+	if (Heap[loc] < Heap[right] || Heap[loc] < Heap[left])
+	{
+		
+	}
 }
 
 bool PriorityQueueWHeap::remove(int loc) {

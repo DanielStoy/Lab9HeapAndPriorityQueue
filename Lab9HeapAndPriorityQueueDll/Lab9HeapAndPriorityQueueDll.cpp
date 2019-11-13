@@ -111,19 +111,21 @@ bool PriorityQueueWHeap::insert(int num) {
 //Takes in a child and engueues upwards towards root
 bool PriorityQueueWHeap::enqueue(int Loc)
 {
-	//Explain the math behind parentLoc
-	int parentLoc = (Loc - 1) / 2;
-	//Has hit the end of the array
-	if (parentLoc < 0)
+	if (Loc == 0)
 	{
 		return true;
 	}
-
+	int parentLoc = (Loc - 1) / 2;
+	//Has hit the end of the array
+	
 	//Preforms a swap
 	if (Heap[parentLoc] < Heap[Loc]){
 		int holder = Heap[parentLoc];
 		Heap[parentLoc] = Heap[Loc];
 		Heap[Loc] = holder;
+	}
+	else {
+		return true;
 	}
 
 	//Continues on with parent
@@ -154,6 +156,10 @@ bool PriorityQueueWHeap::IsValidHeap(int loc) {
 }
 
 bool PriorityQueueWHeap::remove(int loc) {
+	if (loc >= Heap.size())
+	{
+		return false;
+	}
 	//Swap with last element
 	int temp = Heap[loc];
 	Heap[loc] = Heap.back();

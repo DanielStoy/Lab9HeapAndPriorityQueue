@@ -162,12 +162,50 @@ bool PriorityQueueWHeap::remove(int loc) {
 	//Delete the last element
 	Heap.pop_back();
 
+	enqueueToLeaf(loc);
 
 	return false;
 }
 
-bool PriorityQueueWHeap::printQueue() {
-	return false;
+bool PriorityQueueWHeap::enqueueToLeaf(int loc) {
+	int tempLoc;
+	int tempVal;
+	int left = 2 * loc + 1;
+	int right = 2 * (loc + 1);
+
+	if (left >= Heap.size() || right >= Heap.size())
+	{
+		return true;
+	}
+
+	//Find the greater of the two children
+	if (Heap[right] > Heap[left])
+	{
+		tempVal = Heap[right];
+		tempLoc = right;
+	}
+	else {
+		tempVal = Heap[left];
+		tempLoc = left;
+	}
+
+	if (tempVal > Heap[loc])
+	{
+		Heap[tempLoc] = Heap[loc];
+		Heap[loc] = tempVal;
+		enqueueToLeaf(tempLoc);
+	}
+
+	return true;
+}
+
+std::string PriorityQueueWHeap::printQueue() {
+	std::vector<int> temp = Heap;
+	std::string returnString;
+	for (int i = 0; i < Heap.size(); i++) {
+		returnString += std::to_string(Heap[i]) + " ";
+	}
+	return returnString;
 }
 
 Node::Node() 

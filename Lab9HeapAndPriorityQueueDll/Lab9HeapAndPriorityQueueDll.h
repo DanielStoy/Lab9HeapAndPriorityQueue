@@ -14,15 +14,23 @@
 #include <vector>
 #include <algorithm>
 
+class LAB9HEAPANDPRIORITYQUEUEDLL_API PriorityNode {
+public:
+	int priority;
+	int value;
+	PriorityNode(int val);
+};
+
 // This class is exported from the dll
 class LAB9HEAPANDPRIORITYQUEUEDLL_API PriorityQueueWQueue {
 public:
+	PriorityQueueWQueue();
 	bool insert(int num);
 	bool remove(int loc);
 	bool printQueue();
 	// TODO: add your methods here.
 private:
-	std::vector<int> queue; // i dunno what the hell is going on
+	std::vector<PriorityNode> queue;
 };
 
 class LAB9HEAPANDPRIORITYQUEUEDLL_API PriorityQueueWHeap {

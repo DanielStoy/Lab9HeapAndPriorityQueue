@@ -3,6 +3,11 @@
 
 
 //Queue stuffs
+
+PriorityQueueWQueue::PriorityQueueWQueue() {
+
+}
+
 bool PriorityQueueWQueue::insert(int num) {
 	return false;
 }

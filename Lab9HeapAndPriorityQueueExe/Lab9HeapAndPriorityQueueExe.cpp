@@ -2,19 +2,29 @@
 //
 
 #include <iostream>
+#include <chrono>
+
+using namespace std;
+typedef std::chrono::high_resolution_clock Clock;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	//A simple main function to make it easier to test
+	int elems = 0;
+	int sort = 0;
+	cout << "How many elements would you like?" << endl;
+	cin >> elems;
+	cout << "which sort, 0: bubble, 1:insertion, 2: Merge, 3:Quick, 4:Radix" << endl;
+	cin >> sort;
+	Clock::time_point t1;
+	Clock::time_point t2;
+	if (sort == 0) {
+		t1 = Clock::now();
+		t2 = Clock::now();
+	}
+	else if (sort == 1) {
+		t1 = Clock::now();
+		t2 = Clock::now();
+	}
+	cout << chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count() << " nanoseconds" << endl;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

@@ -32,3 +32,24 @@ bool PriorityQueueWHeap::remove(int loc) {
 bool PriorityQueueWHeap::printQueue() {
 	return false;
 }
+
+Node::Node() 
+{
+	val = 0;
+	left = nullptr;
+	right = nullptr;
+}
+
+Node::Node(int Val) 
+{
+	val = Val;
+	left = nullptr;
+	right = nullptr;
+}
+
+Node::Node(Node* Left, Node* Right, int Val) 
+{
+	val = Val;
+	left = Left;
+	right = Right;
+}

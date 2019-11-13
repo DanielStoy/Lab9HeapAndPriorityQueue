@@ -16,7 +16,7 @@ namespace Lab9UnitTest
 		{
 			PriorityQueueWQueue myQueue;
 			myQueue.insert(1);
-			myQueue.insert(2);
+			myQueue.insert(2); 
 			myQueue.insert(3);
 			myQueue.insert(3);
 			myQueue.insert(2);

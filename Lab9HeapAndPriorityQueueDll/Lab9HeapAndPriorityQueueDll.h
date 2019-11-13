@@ -38,7 +38,7 @@ public:
 	//PriorityQueueWHeap();
 	bool insert(int num);
 	bool remove(int loc);
-	bool printQueue();
+	std::string printQueue();
 	bool IsValidHeap(int loc);
 
 private:
@@ -46,7 +46,7 @@ private:
 	//Node* top;
 
 	bool enqueue(int loc);
-
+	bool enqueueToLeaf(int loc);
 };
 
 class LAB9HEAPANDPRIORITYQUEUEDLL_API Node {

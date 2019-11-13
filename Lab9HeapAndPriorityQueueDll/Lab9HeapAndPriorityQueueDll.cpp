@@ -93,36 +93,24 @@ bool PriorityQueueWHeap::engueue(int Loc)
 //Not needed but will be left since it shows how to find children
 //Goes from the top and works it's way down
 bool PriorityQueueWHeap::IsValidHeap(int loc) {
-	return true;
-	//
-	bool holder;
+	//return true;
+	//Get Children
 	int left = 2 * loc + 1;
 	int right = 2 * (loc + 1);
+	//Check if left or right are out of range
+
 	if (left >= Heap.size() || right >= Heap.size())
 	{
 		return true;
 	}
-	
 
-	//if (right >= Heap.size())
-	//{
-	//	//Do something
-	//}
-	//else if (Heap[loc] >= Heap[right])
-	//{
-	//	holder = IsValidHeap(right);
-	//}
-	////Incorrect
-	////This implementation may cause out of bounds errors
-	////Get around this by checking against size
-	////An out of bounds should return true
-	////A failure of left or right should return false
-	//
-	////Still is failing since a false does not end the string
-	//if (Heap[loc] < Heap[right] || Heap[loc] < Heap[left])
-	//{
-	//	
-	//}
+	//see if children are less than parent and that children are heaps
+	else if (Heap[loc] >= Heap[left] && Heap[loc] >= Heap[right] && IsValidHeap(left) && IsValidHeap(right))
+	{
+		return true;
+	}
+
+	return false;
 }
 
 bool PriorityQueueWHeap::remove(int loc) {
